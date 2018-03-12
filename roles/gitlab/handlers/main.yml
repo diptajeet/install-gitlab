@@ -1,0 +1,4 @@
+---
+# handlers file for install-gitlab
+- name: Firewall restart
+  command: 'systemctl restart firewalld'

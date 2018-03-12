@@ -1,0 +1,17 @@
+galaxy_info:
+  author: Diptajeet Khan
+  description: Install and configure NTP Client
+
+  min_ansible_version: 1.2
+  
+  license: MIT
+
+  platforms:
+   - name: EL
+     versions:
+     - 6
+     - 7
+
+  galaxy_tags: 
+   - System
+   - Gitlab

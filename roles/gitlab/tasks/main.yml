@@ -1,0 +1,13 @@
+ - name: Adding the GitLab package repository
+   copy:
+    src: '{{ playbook_dir }}/files/script.rpm.sh'
+    dest: /tmp
+    mode: 0644
+    owner: root
+    group: root
+    
+ - name: Installing Gitlab repository
+   command: 'sh /tmp/script.rpm.sh'
+   
+ - name: Installing Gitlab
+   shell: 'EXTERNAL_URL="http://gitlab.lab.com" yum -y install gitlab-ce'

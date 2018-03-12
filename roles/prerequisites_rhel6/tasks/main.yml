@@ -1,0 +1,15 @@
+ - name: Installing prerequisites for Gitlab
+   yum: name={{ item }} state=latest
+   with_items:
+   - yum-utils
+   - curl
+   - policycoreutils-python
+   - openssh-server
+   - cronie
+   - postfix
+   
+ - name: Configuring postfix
+   service: name=postfix state=started enabled=yes
+   
+ - name: Enabling HTTP & SSH via firewall
+   command: 'lokkit -s http -s ssh'

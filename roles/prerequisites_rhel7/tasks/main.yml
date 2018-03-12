@@ -1,0 +1,20 @@
+ - name: Installing prerequisites for Gitlab
+   yum: name={{ item }} state=latest
+   with_items:
+   - yum-utils
+   - curl
+   - policycoreutils-python
+   - openssh-server
+   - postfix
+   - firewalld
+   
+ - name: Starting firewalld service
+   service: name=firewalld state=started enabled=yes
+   
+ - name: Configuring postfix
+   service: name=postfix state=started enabled=yes
+   
+ - name: Enabling HTTP via firewall
+   command: 'firewall-cmd --permanent --add-service=http'
+   register: firewall
+   notify: Firewall restart
